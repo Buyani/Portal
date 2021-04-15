@@ -1,0 +1,44 @@
+﻿@model Portal.Model.UserModels.Models.LoginModel
+
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_First.cshtml";
+}
+<div class="content">
+    <div class="header">
+        <p class="lead">Login to your account OR <a href="@Url.Action("Register", "Account")">Register</a></p>
+    </div>
+    <form asp-action="LogIn">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Log In" class="btn btn-default" />
+
+
+        </div>
+        <div>
+
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

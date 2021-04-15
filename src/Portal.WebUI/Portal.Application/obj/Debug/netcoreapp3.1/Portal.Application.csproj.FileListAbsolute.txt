@@ -1,0 +1,16 @@
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Application.deps.json
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Application.dll
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Application.pdb
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Data.dll
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Model.dll
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Service.dll
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Data.pdb
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Service.pdb
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\bin\Debug\netcoreapp3.1\Portal.Model.pdb
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.csprojAssemblyReference.cache
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.AssemblyInfo.cs
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.csproj.CopyComplete
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.dll
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Application\obj\Debug\netcoreapp3.1\Portal.Application.pdb
