@@ -30,7 +30,7 @@ COT Project support CRUD operations for cot reports for forex anlysis ,howerver 
 - in `appsettings.json`file change the connection string according to your system.
   ```
     "ConnectionStrings": {
-    "CotConnection": "Server=(localdb)\\mssqllocaldb;Database=CotData;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "PortalConn": "Server=(localdb)\\mssqllocaldb;Database=PortalConnData;Trusted_Connection=True;MultipleActiveResultSets=true"
   },
   ```
 - In package manager console run the following commands 
