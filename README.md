@@ -1,5 +1,4 @@
 
-![Dashboard](https://github.com/Buyani/COT-Projects/blob/master/img/layout.PNG)
 # Prototype of Matric Upgrade Management System
 
 #Finished Use Cases
