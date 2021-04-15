@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Portal.Data.Entities;
+using Portal.Model.SubjectModels;
 using Portal.Model.UserModels.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,12 @@ namespace Portal.Data.Mapping
     {
         public AutoMappings()
         {
-            //mappings go here
+            //user mappings
             CreateMap<ApplicationUser, UserViewModel>();
+
+            //subject mappings
+            CreateMap<SubjectModel, Subject>();
+            CreateMap<Subject, SubjectViewModel>();
         }
     }
 }

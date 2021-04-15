@@ -21,9 +21,9 @@ namespace Portal.Data.Infrastructure.Abstractions
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            return  _context.Set<TEntity>();
         }
 
         public async Task Add(TEntity entity)

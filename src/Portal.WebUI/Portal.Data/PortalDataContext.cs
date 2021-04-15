@@ -19,6 +19,7 @@ namespace Portal.Data
         }
 
         //Initialize entities
+        public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
