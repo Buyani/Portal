@@ -27,6 +27,7 @@ namespace Portal.Application
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IIdentityRoleService, IdentityRoleService>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, MyUserClaimsPrincipalFactory>();
             return services;

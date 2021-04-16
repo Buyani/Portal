@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portal.Model.UserModels.Models
+namespace Portal.Model.RolesModels
 {
     public class RoleModel
     {

@@ -175,3 +175,5 @@ C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\bin\Debug\net5.
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\obj\Debug\net5.0\Razor\Views\Subject\Index.cshtml.g.cs
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\obj\Debug\net5.0\Razor\Views\Subject\Create.cshtml.g.cs
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.WebUI\obj\Debug\net5.0\Razor\Views\Admin\CreateRole.cshtml.g.cs
