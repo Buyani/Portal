@@ -15,6 +15,7 @@ namespace Portal.Data
             var rolelist = new List<IdentityRole>();
             rolelist.Add(new IdentityRole("Administrator"));
             rolelist.Add(new IdentityRole("Clerk"));
+            rolelist.Add(new IdentityRole { Name = "Student", NormalizedName = "STUDENT" });
 
 
             foreach(var role in rolelist)
@@ -29,7 +30,7 @@ namespace Portal.Data
 
             if (userManager.Users.All(u => u.UserName != administrator.UserName))
             {
-                await userManager.CreateAsync(administrator, "Administrator1!");
+                await userManager.CreateAsync(administrator, "Admin@12345$");
                 await userManager.AddToRolesAsync(administrator, new[] { "Administrator" });
             }
 

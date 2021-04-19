@@ -20,7 +20,6 @@ namespace Portal.Data.Infrastructure.Abstractions
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
-
         public IQueryable<TEntity> GetAll()
         {
             return  _context.Set<TEntity>();
@@ -30,7 +29,6 @@ namespace Portal.Data.Infrastructure.Abstractions
         {
             await _context.Set<TEntity>().AddAsync(entity);
         }
-
         public void Delete(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);

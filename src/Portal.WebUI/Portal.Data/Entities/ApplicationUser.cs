@@ -13,5 +13,7 @@ namespace Portal.Data.Entities
         public string LastName { get; set; }
         [PersonalData]
         public bool Blocked { get; set; }
+        [PersonalData]
+        public bool IsAdmin { get; set; }
     }
 }

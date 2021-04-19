@@ -20,6 +20,11 @@ namespace Portal.WebUI.Controllers
             _identityservice = identityservice;
             _identityroleservice = identityroleservice;
         }
+        public IActionResult Users()
+        {
+            var userlist = _identityservice.Users();
+            return View(userlist);
+        }
         // GET: AdminController
         public ActionResult CreateAdmin()
         {

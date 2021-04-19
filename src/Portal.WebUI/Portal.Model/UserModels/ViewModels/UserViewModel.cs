@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portal.Model.RolesModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,5 +10,6 @@ namespace Portal.Model.UserModels.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public List<RoleViewModel> UserRoles { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Portal.Data.Entities;
 using Portal.Model.RolesModels;
 using Portal.Service.Interfaces;
 using System;
@@ -13,11 +14,12 @@ namespace Portal.Service.Implementation
     public class IdentityRoleService : IIdentityRoleService
     {
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public IdentityRoleService(RoleManager<IdentityRole> roleManager)
+        public IdentityRoleService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
-
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         public async Task<IdentityResult> AddRole(RoleModel model)
         {
@@ -34,6 +36,5 @@ namespace Portal.Service.Implementation
             var list = await _roleManager.Roles.ToListAsync();
             return list.Select(p => new RoleViewModel { Name = p.Name, Id = p.Id }).ToList();
         }
-
     }
 }

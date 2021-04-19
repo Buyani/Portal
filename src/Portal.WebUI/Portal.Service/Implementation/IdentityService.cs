@@ -17,16 +17,13 @@ namespace Portal.Service.Implementation
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-
         private readonly IMapper _mapper;
-
         public IdentityService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
         }
-
         public async Task<RegistrationToken> CreateUserAsync(RegisterViewModel model)
         {
             var token = new RegistrationToken();
@@ -34,7 +31,7 @@ namespace Portal.Service.Implementation
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "Client");
+                await _userManager.AddToRoleAsync(user, "Student");
                 token.Results = true;
                 token.EmailConfimationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 token.User = user;
@@ -52,13 +49,11 @@ namespace Portal.Service.Implementation
             }
             return false;
         }
-
         public async Task<UserViewModel> UserProfile(string email)
         {
             var user = await _userManager.FindByNameAsync(email);
             return _mapper.Map<UserViewModel>(user);
         }
-
         public List<UserViewModel> Users()
         {
             var list = _userManager.Users;
@@ -94,9 +89,9 @@ namespace Portal.Service.Implementation
         public async Task<bool> LogUserIn(LoginModel model, bool RememberMe)
         {
             bool token = false;
-            var user = await _userManager.FindByNameAsync(model.Email);
-            var paswsord = await _userManager.CheckPasswordAsync(user, model.Password);
-            if (paswsord)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            var results = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (results)
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
