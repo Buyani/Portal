@@ -4,9 +4,6 @@ using Portal.Model.RolesModels;
 using Portal.Model.UserModels.Models;
 using Portal.Service.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Portal.WebUI.Controllers
 {
@@ -14,7 +11,6 @@ namespace Portal.WebUI.Controllers
     {
         private readonly IIdentityService _identityservice;
         private readonly IIdentityRoleService _identityroleservice;
-
         public AdminController(IIdentityService identityservice, IIdentityRoleService identityroleservice)
         {
             _identityservice = identityservice;
@@ -25,13 +21,11 @@ namespace Portal.WebUI.Controllers
             var userlist = _identityservice.Users();
             return View(userlist);
         }
-        // GET: AdminController
         public ActionResult CreateAdmin()
         {
             var user = new RegisterViewModel();
             return View(user);
         }
-        // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateAdmin(RegisterViewModel model)
@@ -51,7 +45,6 @@ namespace Portal.WebUI.Controllers
             var role = new RoleModel();
             return View(role);
         }
-        // POST: AdminController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRole(RoleModel model)

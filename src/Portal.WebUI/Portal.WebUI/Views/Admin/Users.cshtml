@@ -7,8 +7,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category">Users List</p>
+            <h4 class="card-title ">Users List</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -28,36 +27,34 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @item.FirstName
-                            </td>
-                            <td>
-                                @item.LastName
-                            </td>
-                            <td>
-                                @item.Email
-                            </td>
-                            <td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-primary" }, new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                            </td>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @item.FirstName
+                                </td>
+                                <td>
+                                    @item.LastName
+                                </td>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-primary" }, new { /* id=item.PrimaryKey */ }) |
+                                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                </td>
+                            </tr>
                         }
-
-
-
                     </tbody>
-                    </table>
+                </table>
             </div>
+            <p>
+                <a asp-action="CreateAdmin" class="btn btn-success btn-sm">New User</a>
+            </p>
         </div>
+
     </div>
 </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 
