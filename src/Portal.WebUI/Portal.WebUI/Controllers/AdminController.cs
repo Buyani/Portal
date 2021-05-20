@@ -4,6 +4,7 @@ using Portal.Model.RolesModels;
 using Portal.Model.UserModels.Models;
 using Portal.Service.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace Portal.WebUI.Controllers
 {
@@ -58,6 +59,16 @@ namespace Portal.WebUI.Controllers
             {
                 return View();
             }
+        }
+        public async Task<ActionResult> Block(string userId)
+        {
+            await _identityservice.BlockUser(userId);
+            return RedirectToAction("Users");
+        }
+        public async Task<ActionResult> Unblock(string userId)
+        {
+            await _identityservice.Unblock(userId);
+            return RedirectToAction("Users");
         }
     }
 }

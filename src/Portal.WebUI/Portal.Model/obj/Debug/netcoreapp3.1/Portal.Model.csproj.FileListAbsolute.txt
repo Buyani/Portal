@@ -6,4 +6,3 @@ C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Model\obj\Debug\netco
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Model\obj\Debug\netcoreapp3.1\Portal.Model.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Model\obj\Debug\netcoreapp3.1\Portal.Model.dll
 C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Model\obj\Debug\netcoreapp3.1\Portal.Model.pdb
-C:\Users\Admin\Source\repos\Portal\src\Portal.WebUI\Portal.Model\obj\Debug\netcoreapp3.1\Portal.Model.csprojAssemblyReference.cache

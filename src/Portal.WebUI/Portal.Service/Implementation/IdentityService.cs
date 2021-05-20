@@ -65,6 +65,7 @@ namespace Portal.Service.Implementation
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null)
             {
+                user.LastName = model.LastName;
                 var result = await _userManager.UpdateAsync(user);
 
                 if (result.Succeeded)
@@ -102,9 +103,52 @@ namespace Portal.Service.Implementation
             }
             return token;
         }
+
         public async Task LogOut()
         {
             await _signInManager.SignOutAsync();
+        }
+
+        public async Task<bool> BlockUser(string userId)
+        {
+            var output = false;
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                user.Blocked = true;
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    output = true;
+                }
+            }
+            return output;
+        }
+        public async Task<bool>  Unblock(string userId)
+        {
+            var output = false;
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                user.Blocked = false;
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    output = true;
+                }
+            }
+            return output;
+        }
+
+        public async Task<bool> UserBlocked(string email)
+        {
+            var blocked = false;
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                blocked = user.Blocked;
+            }
+            return blocked;
         }
     }
 }

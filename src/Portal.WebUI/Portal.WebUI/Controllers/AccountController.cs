@@ -75,6 +75,11 @@ namespace Portal.WebUI.Controllers
                     {
                         return Redirect(returnUrl);
                     }
+                    if(await _identityservice.UserBlocked(model.Email))
+                    {
+                        TempData["message"] = "This user has been blocked please contact admin";
+                        return View(model);
+                    }
                     TempData["message"] = "Hi " + model.Email.ToString().Split("@")[0] + " welcome back";
                     return RedirectToAction("Index","Home");
                 }                 
@@ -126,5 +131,8 @@ namespace Portal.WebUI.Controllers
             }
             return RedirectToAction("Profile", "Account",new {email= model.Email });
         }
+
+
+
     }
 }

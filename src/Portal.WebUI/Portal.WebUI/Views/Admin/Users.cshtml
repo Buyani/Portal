@@ -38,10 +38,29 @@
                                     @item.Email
                                 </td>
                                 <td>
+                                    @if (item.Blocked)
+                                    {
+                                        <p class="text-danger">blocked</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-success">active</p>
+                                    }
+                                </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-primary" }, new { /* id=item.PrimaryKey */ }) |
-                                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                <td>
+
+
+                                    @if (item.Blocked)
+                                    {
+                                        @Html.ActionLink("unblock", "Unblock", new { userId = item.Id }, new { @class = "btn bnt-primary btn-sm" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("block", "Block", new { userId = item.Id }, new { @class = "btn bnt-danger btn-sm" }) 
+                                        
+                                    }
+
                                 </td>
                             </tr>
                         }

@@ -23,6 +23,10 @@ namespace Portal.Service.Interfaces
 
         //Roles methods
         Task<bool> IsInRoleAsync(string userId, string role);
-     
+
+        Task<bool> BlockUser(string userId);
+        Task<bool> Unblock(string userId);
+
+        Task<bool> UserBlocked(string email);
     }
 }
