@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Portal.Data.Entities;
 using Portal.Model.RolesModels;
@@ -15,26 +16,23 @@ namespace Portal.Service.Implementation
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public IdentityRoleService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public IdentityRoleService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _mapper = mapper;
         }
         public async Task<IdentityResult> AddRole(RoleModel model)
         {
-            var results = new IdentityResult();
-            if (model.Name != null)
-            {
-               results =  await _roleManager.CreateAsync(new IdentityRole(model.Name.Trim()));
-
-            }
-            return results;
+            return await _roleManager.CreateAsync(new IdentityRole {Name=model.Name });
         }
         public async Task<ICollection<RoleViewModel>> RolesList()
         {
             var list = await _roleManager.Roles.ToListAsync();
-            return list.Select(p => new RoleViewModel { Name = p.Name, Id = p.Id }).ToList();
+            return list.Select(_mapper.Map<IdentityRole, RoleViewModel>).ToList();
+
         }
     }
 }

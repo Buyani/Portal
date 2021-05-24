@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Portal.Model.RolesModels.RoleViewModel>
+
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Views/Shared/_Administrator.cshtml";
+}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title ">Role List</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                <a asp-action="CreateRole" ><span class="material-icons">person_add</span></a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+

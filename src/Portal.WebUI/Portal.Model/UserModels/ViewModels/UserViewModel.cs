@@ -12,6 +12,6 @@ namespace Portal.Model.UserModels.ViewModels
         public string LastName { get; set; }
         public bool Blocked { get; set; }
         public string Email { get; set; }
-        public List<RoleViewModel> UserRoles { get; set; }
+        public List<string> UserRoles { get; set; }
     }
 }

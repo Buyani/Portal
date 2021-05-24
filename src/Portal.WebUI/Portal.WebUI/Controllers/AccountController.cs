@@ -71,10 +71,6 @@ namespace Portal.WebUI.Controllers
                 var results = await _identityservice.LogUserIn(model, RememberMe);
                 if (results)
                 {
-                    if(!string.IsNullOrEmpty(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
                     if(await _identityservice.UserBlocked(model.Email))
                     {
                         TempData["message"] = "This user has been blocked please contact admin";
@@ -131,6 +127,17 @@ namespace Portal.WebUI.Controllers
             }
             return RedirectToAction("Profile", "Account",new {email= model.Email });
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult>Manage(string UserId)
+        //{
+        //    var user = _identityservice.Manage(UserId);
+        //    return View(user);
+        //}
+        //public async Task<IActionResult> Manage(string UserId)
+        //{
+
+        //}
 
 
 

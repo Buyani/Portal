@@ -1,0 +1,37 @@
+﻿@model List<Portal.Model.RolesModels.ManageUserRolesViewModel>
+
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Administrator.cshtml";
+}
+<form method="post">
+    <div class="card col-md-12">
+        <div class="card-header">
+            <h2>Manage User Roles</h2>
+            <b> Add/Remove Roles for User / @ViewBag.UserName.</b>
+        </div>
+        <div class="card-body">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            <div class="form-check">
+                <input type="hidden" asp-for="@Model[i].RoleId" />
+                <input type="hidden" asp-for="@Model[i].RoleName" />
+
+                <input asp-for="@Model[i].Selected"  type="checkbox"id="basic-disabled-checkbox"class="mdc-checkbox__native-control"/>
+
+                
+
+                <label class="form-check-label" asp-for="@Model[i].Selected">
+                    @Model[i].RoleName
+                </label>
+            </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Update" class="btn btn-primary"
+                   style="width:auto" />
+            <a asp-action="Users" class="btn btn-primary" style="width:auto">Cancel</a>
+        </div>
+    </div>
+</form>

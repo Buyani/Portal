@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Portal.Data.Entities;
+using Portal.Model.RolesModels;
 using Portal.Model.SubjectModels;
 using Portal.Model.UserModels.ViewModels;
 using System;
@@ -18,6 +20,10 @@ namespace Portal.Data.Mapping
             //subject mappings
             CreateMap<SubjectModel, Subject>();
             CreateMap<Subject, SubjectViewModel>();
+
+            //Roles mappings
+            CreateMap<IdentityRole, RoleViewModel>();
+            CreateMap<RoleViewModel, IdentityRole>();
         }
     }
 }

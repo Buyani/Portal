@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Portal.Data.Entities;
+using Portal.Model.RolesModels;
 using Portal.Model.UserModels.Models;
 using Portal.Model.UserModels.ViewModels;
 using Portal.Service.Interfaces;
@@ -15,6 +16,7 @@ namespace Portal.Service.Implementation
 {
     public class IdentityService: IIdentityService
     {
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IMapper _mapper;
@@ -28,7 +30,7 @@ namespace Portal.Service.Implementation
         {
             var token = new RegistrationToken();
             var user = new ApplicationUser { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email, Email = model.Email, EmailConfirmed = true };
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user,GeneratePassword());
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "Student");
@@ -54,10 +56,21 @@ namespace Portal.Service.Implementation
             var user = await _userManager.FindByNameAsync(email);
             return _mapper.Map<UserViewModel>(user);
         }
-        public List<UserViewModel> Users()
+        private async Task<List<string>> GetUserRoles(string userId)
         {
-            var list = _userManager.Users;
-            return list.Select(_mapper.Map<ApplicationUser, UserViewModel>).ToList();
+            var user = await _userManager.FindByIdAsync(userId);
+            return new List<string>(await _userManager.GetRolesAsync(user));
+        }
+        public async Task<List<UserViewModel>> Users()
+        {
+            var list =  _userManager.Users;
+            var userviewlist= list.Select(_mapper.Map<ApplicationUser, UserViewModel>).ToList();
+            foreach(var user in userviewlist)
+            {
+                user.UserRoles = await GetUserRoles(user.Id);
+            }
+
+            return userviewlist;
         }
         public async Task<UserViewModel> UpdateProfile(UserViewModel model)
         {
@@ -103,12 +116,10 @@ namespace Portal.Service.Implementation
             }
             return token;
         }
-
         public async Task LogOut()
         {
             await _signInManager.SignOutAsync();
         }
-
         public async Task<bool> BlockUser(string userId)
         {
             var output = false;
@@ -139,7 +150,6 @@ namespace Portal.Service.Implementation
             }
             return output;
         }
-
         public async Task<bool> UserBlocked(string email)
         {
             var blocked = false;
@@ -150,5 +160,47 @@ namespace Portal.Service.Implementation
             }
             return blocked;
         }
+        public string GeneratePassword()
+        {
+            var options = _userManager.Options.Password;
+
+            int length = options.RequiredLength;
+
+            bool nonAlphanumeric = options.RequireNonAlphanumeric;
+            bool digit = options.RequireDigit;
+            bool lowercase = options.RequireLowercase;
+            bool uppercase = options.RequireUppercase;
+
+            StringBuilder password = new StringBuilder();
+            Random random = new Random();
+
+            while (password.Length < length)
+            {
+                char c = (char)random.Next(32, 126);
+
+                password.Append(c);
+
+                if (char.IsDigit(c))
+                    digit = false;
+                else if (char.IsLower(c))
+                    lowercase = false;
+                else if (char.IsUpper(c))
+                    uppercase = false;
+                else if (!char.IsLetterOrDigit(c))
+                    nonAlphanumeric = false;
+            }
+
+            if (nonAlphanumeric)
+                password.Append((char)random.Next(33, 48));
+            if (digit)
+                password.Append((char)random.Next(48, 58));
+            if (lowercase)
+                password.Append((char)random.Next(97, 123));
+            if (uppercase)
+                password.Append((char)random.Next(65, 91));
+
+            return password.ToString();
+        }
+
     }
 }

@@ -22,58 +22,76 @@
                     <th>
                         Eamil
                     </th>
-                    </thead>
+                    <th>
+                        Roles
+                    </th>
                     <tbody>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @item.FirstName
-                                </td>
-                                <td>
-                                    @item.LastName
-                                </td>
-                                <td>
-                                    @item.Email
-                                </td>
-                                <td>
-                                    @if (item.Blocked)
-                                    {
-                                        <p class="text-danger">blocked</p>
-                                    }
-                                    else
-                                    {
-                                        <p class="text-success">active</p>
-                                    }
-                                </td>
-                                <td>
-                                <td>
+                        <tr>
+                            <td>
+                                @item.FirstName
+                            </td>
+                            <td>
+                                @item.LastName
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>@string.Join(" , ", item.UserRoles.ToList())</td>
+                            <td>
+                                @if (item.Blocked)
+                                {
+                                    <p class="text-danger">blocked</p>
+                                }
+                                else
+                                {
+                                    <p class="text-success">active</p>
+                                }
+                            </td>
+                            <td>
+                            <td>
 
 
-                                    @if (item.Blocked)
-                                    {
-                                        @Html.ActionLink("unblock", "Unblock", new { userId = item.Id }, new { @class = "btn bnt-primary btn-sm" })
-                                    }
-                                    else
-                                    {
-                                        @Html.ActionLink("block", "Block", new { userId = item.Id }, new { @class = "btn bnt-danger btn-sm" }) 
-                                        
-                                    }
+                                @if (item.Blocked)
+                                {
+                                    <a href="@Url.Action("Unblock", "Admin", new { userId = item.Id })"><span class="material-icons icon-red">toggle_off</span></a>
+                                }
+                                else
+                                {
 
-                                </td>
-                            </tr>
+                                    <a href="@Url.Action("Block", "Admin", new { userId = item.Id })"><span class="material-icons icon-blue">toggle_on</span></a>
+                                }
+
+                            </td>
+                            <td>
+                                @if (!item.Blocked)
+                                {
+                                    <a href=" @Url.Action("Manage","Admin",new {userId=item.Id })"><span class="material-icons">edit</span></a>
+                                }
+                            </td>
+
+                        </tr>
                         }
                     </tbody>
                 </table>
             </div>
             <p>
-                <a asp-action="CreateAdmin" class="btn btn-success btn-sm">New User</a>
+                <a asp-action="CreateAdmin"><span class="material-icons">person_add</span></a>
             </p>
         </div>
 
     </div>
 </div>
 
+<style>
+    span.icon-blue {
+        color: blue;
+    }
 
+    span.icon-red {
+        color: red;
+    }
+</style>
 
