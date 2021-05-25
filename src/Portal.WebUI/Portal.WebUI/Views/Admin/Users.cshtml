@@ -4,94 +4,112 @@
     ViewData["Title"] = "Users";
     Layout = "~/Views/Shared/_Administrator.cshtml";
 }
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title ">Users List</h4>
+    <form class="navbar-form" asp-controller="Admin" asp-action="Users">
+        <div class="input-group no-border">
+            <input type="text" name="SearchString" class="form-control input-lg" placeholder="Search...">
+            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+            </button>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class=" text-primary">
-                    <th>
-                        FirstName
-                    </th>
-                    <th>
-                        LastName
-                    </th>
-                    <th>
-                        Eamil
-                    </th>
-                    <th>
-                        Roles
-                    </th>
-                    <tbody>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>
-                                @item.FirstName
-                            </td>
-                            <td>
-                                @item.LastName
-                            </td>
-                            <td>
-                                @item.Email
-                            </td>
-                            <td>@string.Join(" , ", item.UserRoles.ToList())</td>
-                            <td>
-                                @if (item.Blocked)
-                                {
-                                    <p class="text-danger">blocked</p>
-                                }
-                                else
-                                {
-                                    <p class="text-success">active</p>
-                                }
-                            </td>
-                            <td>
-                            <td>
+    </form>
 
-
-                                @if (item.Blocked)
-                                {
-                                    <a href="@Url.Action("Unblock", "Admin", new { userId = item.Id })"><span class="material-icons icon-red">toggle_off</span></a>
-                                }
-                                else
-                                {
-
-                                    <a href="@Url.Action("Block", "Admin", new { userId = item.Id })"><span class="material-icons icon-blue">toggle_on</span></a>
-                                }
-
-                            </td>
-                            <td>
-                                @if (!item.Blocked)
-                                {
-                                    <a href=" @Url.Action("Manage","Admin",new {userId=item.Id })"><span class="material-icons">edit</span></a>
-                                }
-                            </td>
-
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Users List</h4>
             </div>
-            <p>
-                <a asp-action="CreateAdmin"><span class="material-icons">person_add</span></a>
-            </p>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                        <th>
+                            FirstName
+                        </th>
+                        <th>
+                            LastName
+                        </th>
+                        <th>
+                            Eamil
+                        </th>
+                        <th>
+                            Roles
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                        <tbody>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.FirstName
+                                    </td>
+                                    <td>
+                                        @item.LastName
+                                    </td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>@string.Join(" , ", item.UserRoles.ToList())</td>
+                                    <td>
+                                        @if (item.Blocked)
+                                        {
+                                            <p class="text-danger">blocked</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-success">active</p>
+                                        }
+                                    </td>
+                                    <td>
+
+
+                                        @if (item.Blocked)
+                                        {
+                                            <a href="@Url.Action("Unblock", "Admin", new { userId = item.Id })"><span class="material-icons icon-red">toggle_off</span></a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="@Url.Action("Block", "Admin", new { userId = item.Id })"><span class="material-icons icon-blue">toggle_on</span></a>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @if (!item.Blocked)
+                                        {
+                                            <a href=" @Url.Action("Manage","Admin",new {userId=item.Id })"><span class="material-icons">edit</span></a>
+                                        }
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <p>
+                    <a asp-action="CreateAdmin"><span class="material-icons">person_add</span></a>
+                </p>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<style>
-    span.icon-blue {
-        color: blue;
-    }
+    <style>
+        span.icon-blue {
+            color: blue;
+        }
 
-    span.icon-red {
-        color: red;
-    }
-</style>
+        span.icon-red {
+            color: red;
+        }
+    </style>
+
+
 

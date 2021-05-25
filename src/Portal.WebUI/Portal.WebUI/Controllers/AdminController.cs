@@ -27,9 +27,13 @@ namespace Portal.WebUI.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Users()
+        public async Task<IActionResult> Users(string searchString)
         {
             var userlist = await _identityservice.Users();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                userlist = userlist.Where(s => s.FirstName.Contains(searchString)).ToList();
+            }
             return View(userlist);
         }
 
